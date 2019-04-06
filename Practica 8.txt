@@ -1,0 +1,57 @@
+Programability in data base 
+1.-stored procedures
+	*Create procedure ReporteAleatorio
+		Declate, select, set,estructuras,cursor
+		(for each (tabla, int mat, varcha(100)nombre)
+2.-functions
+	*Las funciones pueden regresar tablas pero no es
+	 recomendable.
+3.-triggers
+	*Es como un evento, lo que hace es desencadenar una
+	serie de instrucciones(insert, delete, update) y se puede
+	dar en 3 tiempo: antes, en lugar de o despues de el evento.
+4.-dynamic querys
+	*Query para hacer alguna accion en la base de datos pero 
+	ejecutando comando fuera de la base de datos.
+
+Ejemplos:
+
+1.- Create procedure ReporteAleatorio(@valor1 int)
+as 
+begin
+	Declare @valro2 varchar(100) = ' '
+	select @valor2
+	set @valor2 = 'HOLA'	
+exec ReporteAleatorio 1
+
+2.- Create function fnSuma(@v1 int, @v2 int)
+returns int
+as 
+begin
+	RETURN @v1 + @v2
+end
+
+2.1.-Create function fnEmpl()
+return table
+as
+	RETURN select * from Empleados
+select * from fnEmpl()
+
+3.- Create trigger tr_insert
+on InventarioAlmacenProductos
+for instead | after      insert | update | delete
+as 
+begin
+	select  *
+	from INSERTED
+	select  *
+	from deleted
+end
+
+4.-
+
+Practica 8 
+	2 Triggers
+	10 SP (1 por cada reporte)
+	1 funcion
+	1 Query dinamica
